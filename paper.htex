@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\usepackage{holtexbasic}
+
+% Nice HOL environment
+\newenvironment{holmath}{\begin{displaymath}\begin{array}{l}}{\end{array}\end{displaymath}\ignorespacesafterend}
+
+\title{Holmake me a paper}
+\author{Alejandro Gomez-Londoño}
+
+\begin{document}
+
+A very large theorem:
+
+\begin{holmath}
+  \HOLthm[conj1]{separationLogic.asl_prog_IS_RESOURCE_AND_PROCCALL_FREE___ASL_REWRITES} \\
+  \HOLthm[conj2]{separationLogic.asl_prog_IS_RESOURCE_AND_PROCCALL_FREE___ASL_REWRITES} \\
+  \HOLthm[conj3]{separationLogic.asl_prog_IS_RESOURCE_AND_PROCCALL_FREE___ASL_REWRITES} \\
+  \HOLthm[conj4]{separationLogic.asl_prog_IS_RESOURCE_AND_PROCCALL_FREE___ASL_REWRITES} \\
+  \dots
+\end{holmath}
+
+Another theorem:
+
+\begin{holmath}
+  \HOLthm[]{separationLogic.IS_SEPARATION_COMBINATOR_def}
+\end{holmath}
+
+\end{document}

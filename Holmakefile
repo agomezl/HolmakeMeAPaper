@@ -1,0 +1,40 @@
+# Location of the CakeML installation , the default is the current directory
+ifndef CAKEDIR
+CAKEDIR = cakeml
+endif
+
+HOLHEAP = heap
+
+# Where to find your theories
+INCLUDES = $(CAKEDIR)/misc \
+	   $(HOLDIR)/examples/separationLogic/src
+
+# The topmost theory in your development
+HEAPDEPS = $(HOLDIR)/examples/separationLogic/src/separationLogicTheory.uo \
+	   $(CAKEDIR)/misc/preamble.uo
+
+# The pretty-printing library
+MAIN = ppLib
+
+# This rule processes the munger commands and produces plain-ish LaTeX
+paper.tex : paper.htex munge.exe overrides
+	./munge.exe -w60 -m';' overrides < $< > $@
+
+# paper.pdf : paper.tex holtexbasic.sty paper.bib
+paper.pdf : paper.tex holtexbasic.sty
+	latexmk -pdf paper
+
+# Builds the munge tool with the HOL state on ppTheory
+munge.exe : $(MAIN).uo ppTheory.uo
+	$(protect $(HOLDIR)/bin/mkmunge.exe) $(MAIN)
+
+# Style files for the hol commands
+holtexbasic.sty: $(HOLDIR)/src/TeX/holtexbasic.sty
+	$(CP) $< $@
+
+clean : cleanAll
+	latexmk -pdf -C paper
+	rm -f paper.tex
+
+heap: $(HEAPDEPS)
+	$(protect $(HOLDIR)/bin/buildheap) -o $@ $(HEAPDEPS)

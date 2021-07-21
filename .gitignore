@@ -1,0 +1,25 @@
+# LaTeX
+paper.tex
+
+# HOL stuff
+*Script
+*Theory.sig
+*Theory.sml
+*Theory.dat
+*.uo
+*.ui
+*.o
+.HOLMK
+.hollogs
+
+# HOLHEAP
+*heap
+
+# Emacs backup files
+*~
+
+# Vim swap files
+*.swp
+
+# Munger
+*.exe
