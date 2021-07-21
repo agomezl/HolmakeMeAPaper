@@ -1,5 +1,11 @@
 # LaTeX
 paper.tex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.pdf
+
 
 # HOL stuff
 *Script
