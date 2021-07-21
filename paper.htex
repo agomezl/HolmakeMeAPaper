@@ -17,6 +17,7 @@ A very large theorem:
   \HOLthm[conj2]{separationLogic.asl_prog_IS_RESOURCE_AND_PROCCALL_FREE___ASL_REWRITES} \\
   \HOLthm[conj3]{separationLogic.asl_prog_IS_RESOURCE_AND_PROCCALL_FREE___ASL_REWRITES} \\
   \HOLthm[conj4]{separationLogic.asl_prog_IS_RESOURCE_AND_PROCCALL_FREE___ASL_REWRITES} \\
+  \HOLthm[conj5]{separationLogic.asl_prog_IS_RESOURCE_AND_PROCCALL_FREE___ASL_REWRITES} \\
   \dots
 \end{holmath}
 
