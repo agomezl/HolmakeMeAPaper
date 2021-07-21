@@ -1,0 +1,56 @@
+name : HolmakeMeAPaper
+on:
+  push:
+    paths:
+      - '**.sml'
+      - '**.htex'
+      - '**.bib'
+      - '**.tex'
+      - 'Holmakefile'
+jobs:
+  munger:
+    runs-on: ubuntu-latest
+    container: cakeml/hol4:latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
+        with:
+          path: document
+      - name: Checkout CakeML
+        uses: actions/checkout@v2
+        with:
+          repository: CakeML/CakeML
+          path: cakeml
+      - name: Call Holmake
+        env:
+          CAKEDIR : ${{ github.workspace }}/cakeml
+        run: |
+          cd document
+          Holmake --fast
+      - name : Upload document folder
+        uses: actions/upload-artifact@v2
+        with:
+          retention-days: 7
+          name: paper-src
+          path: |
+            document/
+            !document/heap
+            !document/.HOLMK
+  latex:
+    runs-on: ubuntu-latest
+    container: aergus/latex
+    steps:
+      - name: Retrive tex file
+        uses: actions/download-artifact@v2
+        with:
+          name: paper-src
+      - name: Build pdf
+        run: |
+          ls
+          cd document
+          latexmk -pdf paper
+      - name : Upload pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: paper-pdf
+          path: document/paper.pdf
