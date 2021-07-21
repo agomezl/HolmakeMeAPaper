@@ -36,7 +36,10 @@ jobs:
             document/
             !document/heap
             !document/.HOLMK
+            !document/munger.exe
+            !document/.git
   latex:
+    needs: munger
     runs-on: ubuntu-latest
     container: aergus/latex
     steps:
@@ -47,10 +50,9 @@ jobs:
       - name: Build pdf
         run: |
           ls
-          cd document
           latexmk -pdf paper
       - name : Upload pdf
         uses: actions/upload-artifact@v2
         with:
           name: paper-pdf
-          path: document/paper.pdf
+          path: paper.pdf
