@@ -1,7 +1,7 @@
 .PHONY : clean all
 
 all :
-	Holmake pdf
+	Holmake --fast pdf
 
 clean :
 	Holmake cleanAll
