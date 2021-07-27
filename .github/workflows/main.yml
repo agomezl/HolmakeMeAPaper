@@ -6,6 +6,7 @@ on:
       - '**.htex'
       - '**.bib'
       - '**.tex'
+      - '**.yml'
       - 'Holmakefile'
 jobs:
   munger:
