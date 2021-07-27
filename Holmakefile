@@ -22,7 +22,7 @@ paper.tex : paper.htex munge.exe overrides
 
 # paper.pdf : paper.tex holtexbasic.sty paper.bib
 paper.pdf : paper.tex holtexbasic.sty
-	latexmk -pdf paper
+	latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" $<
 
 # Builds the munge tool with the HOL state on ppTheory
 munge.exe : $(MAIN).uo ppTheory.uo
@@ -34,3 +34,5 @@ holtexbasic.sty: $(HOLDIR)/src/TeX/holtexbasic.sty
 
 heap: $(HEAPDEPS)
 	$(protect $(HOLDIR)/bin/buildheap) -o $@ $(HEAPDEPS)
+
+pdf: paper.pdf

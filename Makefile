@@ -1,10 +1,10 @@
 .PHONY : clean all
 
 all :
-	Holmake
+	Holmake pdf
 
 clean :
 	Holmake cleanAll
 	rm -f heap munge.exe
-	latexmk -pdf -C paper
+	latexmk -pdf -C
 	rm -f paper.tex
