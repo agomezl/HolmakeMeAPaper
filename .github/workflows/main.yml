@@ -37,7 +37,7 @@ jobs:
             document/
             !document/heap
             !document/.HOLMK
-            !document/munger.exe
+            !document/munge.exe
             !document/.git
   latex:
     needs: munger
